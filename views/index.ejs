@@ -35,16 +35,19 @@
                         <% for(let i=0; i < tickets.length; i++) {%>
                         <li class="tickets">
                             <% if(tickets[i].status === 'Open') {%>
-                            <div class=" card-panel hoverable">
+                            <div class="card-panel hoverable">
+                                <div class="right">
+                                    <a href="#"
+                                        ><i class="material-icons delete">delete</i></a
+                                    >
+                                </div>
                                 <h4><%= tickets[i].nameOfJob %></h4>
                                 <p>
                                     Filed by: <%= tickets[i].clientName %> | On:
                                     <%= moment(tickets[i].date).format("LL") %>
                                 </p>
                                 <h5>Description:</h5>
-                                <div>
-                                    <%= tickets[i].description %>
-                                </div>
+                                <div><%= tickets[i].description %></div>
                             </div>
                             <% } %>
                         </li>
