@@ -20,17 +20,17 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use((req, res, next)=>{
-    res.locals.moment = moment;
-    next();
-  });
+app.use((req, res, next) => {
+  res.locals.moment = moment
+  next()
+})
 
 //@index.js     route '/'
 app.get('/', async (req, res) => {
   try {
-    const tickets = await Ticket.find({status: 'Open'})
-    .sort({createdAt: 'desc'})
-    .lean()
+    const tickets = await Ticket.find({ status: 'Open' })
+      .sort({ createdAt: 'desc' })
+      .lean()
     res.render('index', { tickets })
   } catch (err) {
     console.error(err)
@@ -53,9 +53,6 @@ app.post('/add-ticket', async (req, res) => {
     console.error(err)
   }
 })
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
