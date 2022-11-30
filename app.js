@@ -2,11 +2,16 @@ const express = require('express')
 const app = express()
 const MethodOverride = require('method-override')
 const mongoose = require('mongoose')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const flash = require('express-flash')
+const logger = require('morgan')
 const bodyParser = require('body-parser')
 const moment = require('moment')
-const PORT = 8888
-const dotenv = require('dotenv')
 const connectDB = require('./config/db')
+const mainRoutes = require('./routes/main')
+const ticketRoutes = require('./routes/tickets')
 
 dotenv.config({ path: './config/config.env' })
 
