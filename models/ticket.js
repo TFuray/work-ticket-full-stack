@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { Schema, model } = mongoose
 
 const TicketSchema = new mongoose.Schema({
   nameOfJob: {
@@ -14,14 +13,13 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  estimatedCost: {
-    type: Number,
-    default: 0
-  },
-  status: {
+  description: {
     type: String,
-    default: 'Open',
-    enum: ['Open', 'Closed']
+    required: true
+  },
+  completed: {
+    type: Boolean,
+    default: false,
   },
   date: {
     type: Date,
@@ -30,15 +28,8 @@ const TicketSchema = new mongoose.Schema({
   dateComplete: {
     type: Date
   },
-  description: {
+  comments: {
     type: String,
-    required: true
-  },
-  hoursWorked: {
-    type: Number
-  },
-  totalCost: {
-    type: Number
   }
 })
 
