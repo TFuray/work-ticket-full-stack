@@ -53,6 +53,7 @@ app.use(passport.session())
 
 app.use(flash())
 
+// Routes
 app.use('/', mainRoutes)
 app.use('/tickets', ticketsRoutes)
 
