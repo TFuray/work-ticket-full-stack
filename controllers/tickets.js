@@ -1,4 +1,4 @@
-const Ticket = require('../models/ticket')
+const Ticket = require('../models/Ticket')
 
 module.exports = {
   getTickets: async (req, res)=>{

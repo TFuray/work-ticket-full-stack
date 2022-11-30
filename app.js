@@ -6,10 +6,9 @@ const MongoStore = require('connect-mongo')
 const flash = require('express-flash')
 const logger = require('morgan')
 const { engine } = require('express-handlebars')
-const moment = require('moment')
 const connectDB = require('./config/db')
 const mainRoutes = require('./routes/main')
-const ticketRoutes = require('./routes/tickets')
+const ticketsRoutes = require('./routes/tickets')
 
 require('dotenv').config({ path: './config/config.env' })
 
@@ -55,7 +54,7 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRoutes)
-app.use('/tickets', ticketRoutes)
+app.use('/tickets', ticketsRoutes)
 
 
 app.listen(process.env.PORT, () => {

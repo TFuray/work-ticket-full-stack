@@ -4,3 +4,6 @@ const ticketsController = require('../controllers/tickets')
 const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, ticketsController.getTickets)
+
+
+module.exports = router
