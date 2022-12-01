@@ -5,7 +5,9 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, ticketsController.getTickets)
 
-// router.post('/createTodo', ticketsController.createTodo)
+router.get('/add', ensureAuth, ticketsController.addTicket )
+
+router.post('/createTicket', ticketsController.createTicket)
 
 // router.put('/markComplete', ticketsController.markComplete)
 
