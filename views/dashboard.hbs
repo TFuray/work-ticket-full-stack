@@ -2,7 +2,27 @@
 <h3>Welcome {{user}}</h3>
 <p>Here are all open tickets</p>
 {{#if tickets}}
-  <table class="striped">
+<div class="row">
+  <div class="card-panel green">
+    <h3>Open Tickets</h3>
+  </div>
+</div>
+
+{{#each tickets}}
+{{#unless completed}}
+<div class="card-panel hoverable">
+  <div class="right">
+    <a href="#"><i class="material-icons delete">delete</i></a>
+  </div>
+  <h4>{{nameOfJob}}</h4>
+  <p>Filed by: {{clientName}} | On: {{date}}</p>
+  <h5>Description:</h5>
+  <div>{{description}}</div>
+</div>
+{{/unless}}
+{{/each}}
+
+  {{!-- <table class="striped">
     <thead>
       <tr>
         <th>Title</th>
@@ -32,7 +52,7 @@
         </tr>
       {{/each}}
     </tbody>
-  </table>
+  </table> --}}
 {{else}}
   <p>You have not created any stories</p>
 {{/if}}
