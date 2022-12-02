@@ -12,6 +12,7 @@ module.exports = {
       console.log(err)
     }
   },
+
   addTicket: async (req, res) => {
     try {
       res.render('tickets/add')
@@ -19,6 +20,7 @@ module.exports = {
       console.log(err)
     }
   },
+
   createTicket: async (req, res) => {
     try {
       await Ticket.create({
@@ -36,5 +38,18 @@ module.exports = {
     } catch (err) {
       console.log(err)
     }
+  },
+
+  postIndex: async (req, res) => {
+    try {
+      const tickets = await Ticket.find({completed: false})
+        .populate('user')
+        .sort({date: 'desc'})
+        .lean()
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+    },
+    
   }
-}

@@ -5,9 +5,12 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  clientId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   clientName: {
-    type: String,
-    required: true
+    type: String
   },
   location: {
     type: String,
@@ -19,19 +22,15 @@ const TicketSchema = new mongoose.Schema({
   },
   completed: {
     type: Boolean,
-    default: false,
+    default: false
   },
   date: {
     type: Date,
     default: Date.now
   },
-  dateComplete: {
-    type: Date
-  },
   comments: {
-    type: String,
+    type: String
   }
 })
 
- 
 module.exports = mongoose.model('Ticket', TicketSchema)
