@@ -42,6 +42,17 @@ module.exports = {
     }
   },
 
+  markClosed: async (req, res) =>{
+    try {
+      await Ticket.findOneAndUpdate({ _id: req.body._id}, {
+        completed: true
+      })
+      res.redirect('/tickets/index')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   // postIndex: async (req, res) => {
   //   try {
   //     const tickets = await Ticket.find({completed: false})

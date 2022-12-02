@@ -3,11 +3,14 @@
   <h1 class="center-align ">Open Tickets</h1>
   </br>
 </div>
+<div class="col s1 m1">
+  
+</div>
 <div class="row">
   {{#each tickets}}
     <div class="col s12 m6">
       <div class="card">
-        <div class="card-content center-align">
+        <div class="card-content center-align green darken-4 white-text">
           <h3>{{nameOfJob}}</h3>
         </div>
           <br />
@@ -15,11 +18,14 @@
           <p class="open-tickets">Filed by: {{clientName}}</p>
           <p class="date">On: {{date}}</p>
         </div>
+        <div class="card-content">
           <h5>Description:</h5> 
+          <p>{{description}}</p>
+        </div>
           
         
         <div class="card-action hoverable  center-align">
-          <a href="/tickets/{{_id}}" class="btn grey">Read More</a>
+          <a href="/tickets/markClosed" class="btn grey">Mark Closed</a>
         </div>
       </div>
     </div>
