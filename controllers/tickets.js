@@ -4,10 +4,12 @@ module.exports = {
   getTickets: async (req, res) => {
     console.log(req.user)
     try {
-      const ticketItems = await Ticket.find({ userId: req.user.id })
-        .sort({date: "desc"})
+      const tickets = await Ticket.find({ completed: false })
+        // .populate('User')
+        .sort({ date: "desc" }) 
         .lean()
-      res.render('dashboard', { tickets: ticketItems, user: req.user.userName })
+
+      res.render('tickets/index', { tickets, })
     } catch (err) {
       console.log(err)
     }
@@ -40,16 +42,16 @@ module.exports = {
     }
   },
 
-  postIndex: async (req, res) => {
-    try {
-      const tickets = await Ticket.find({completed: false})
-        .populate('user')
-        .sort({date: 'desc'})
-        .lean()
-    } catch (err) {
-      console.log(err)
-      res.render('error/500')
-    }
-    },
+  // postIndex: async (req, res) => {
+  //   try {
+  //     const tickets = await Ticket.find({completed: false})
+  //       .populate('user')
+  //       .sort({date: 'desc'})
+  //       .lean()
+  //   } catch (err) {
+  //     console.log(err)
+  //     res.render('error/500')
+  //   }
+  //   },
     
   }

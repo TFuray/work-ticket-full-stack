@@ -9,7 +9,7 @@ router.get('/add', ensureAuth, ticketsController.addTicket )
 
 router.post('/createTicket', ticketsController.createTicket)
 
-router.post('/', ensureAuth, ticketsController.postIndex)
+// router.post('/', ensureAuth, ticketsController.postIndex)
 
 // router.put('/markComplete', ticketsController.markComplete)
 

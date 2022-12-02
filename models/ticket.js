@@ -12,6 +12,10 @@ const TicketSchema = new mongoose.Schema({
   clientName: {
     type: String
   },
+  assignedTo: {
+    type: String,
+    default: 'Anyone'
+  },
   location: {
     type: String,
     required: true
@@ -30,7 +34,10 @@ const TicketSchema = new mongoose.Schema({
   },
   comments: {
     type: String
-  }
+  },
+  completedBy: {
+    type: String
+  },
 })
 
 module.exports = mongoose.model('Ticket', TicketSchema)
