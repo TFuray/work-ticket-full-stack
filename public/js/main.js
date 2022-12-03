@@ -1,20 +1,40 @@
-const deleteText = document.querySelector('.delete')
+const ticketComplete = document.querySelectorAll('.del')
+// const ticketComment = document.querySelectorAll('.comment')
 
-
-Array.from(deleteText).forEach((element)=>{
-    element.addEventListener('click', deleteTicket)
+Array.from(ticketComplete).forEach(el => {
+  el.addEventListener('click', markClosed)
 })
 
-// async function deleteTicket(){
-//     const title = this.parentNode.parentNode.parentNode.childNodes[5]
-//     const desc = this.parentNode.parentNode.parentNode.childNodes[7]
-//     try{
-//         const response = await fetch('deleteTicket', {
-//             method: 'delete',
-//             headers: {'Content-Type': 'application/json'},
-//             body: JSON.stringify({
-//                 ''
-//             })
-//         })
-//     }
+// Array.from(ticketComment).forEach((el)=>{
+//   el.addEventListener('click', addComment)
+// })
+
+async function markClosed () {
+  const ticketId = this.parentNode.dataset.id
+  try {
+    const response = await fetch('tickets/markClosed', {
+      method: 'put',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        publicJSFile: ticketId
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+    location.reload()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// async function addComment () {
+//   const ticketId = this.parentNode.dataset.id
+//   try {
+//     const response = await fetch('ticket/addComment',{
+//       method: 'post',
+//       headers: {'Content-type'}
+//     })
+//   } catch (err) {
+    
+//   }
 // }

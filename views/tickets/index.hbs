@@ -1,16 +1,15 @@
 <div class="col s12 m12 indicator">
-  </br>
-  <h1 class="center-align ">Open Tickets</h1>
-  </br>
+  <h1 class="center-align">Open Tickets</h1>
 </div>
 <div class="col s1 m1">
-  
+
 </div>
 <div class="row">
   {{#each tickets}}
+  {{#unless completed}}
     <div class="col s12 m6">
       <div class="card">
-        <div class="card-content center-align green darken-4 white-text">
+        <div class="card-content center-align blue-grey darken-3 white-text">
           <h3>{{nameOfJob}}</h3>
         </div>
           <br />
@@ -22,13 +21,52 @@
           <h5>Description:</h5> 
           <p>{{description}}</p>
         </div>
-          
-        
-        <div class="card-action hoverable  center-align">
-          <a href="/tickets/markClosed" class="btn grey">Mark Closed</a>
+           
+        <div data-id="{{_id}}" class="card-action center-align">
+          <span class="del close btn red hoverable">Mark Closed</span>
+          <span class="comment btn blue-grey hoverable">Add Comment</span>
         </div>
       </div>
     </div>
+    {{/unless}}
+  {{else}}
+    <p>No tickets to display</p>
+  {{/each}}
+
+</div>
+
+<div class="col s12 m12 indicator">
+  <h1 class="center-align">Closed Tickets</h1>
+</div>
+<div class="col s1 m1">
+
+</div>
+
+<div class="row">
+  {{#each tickets}}
+    {{#if completed}}
+
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content center-align blue-grey darken-3 white-text">
+            <h3>{{nameOfJob}}</h3>
+          </div>
+          <br />
+          <div class="card-content">
+            <p class="open-tickets">Filed by: {{clientName}}</p>
+            <p class="date">On: {{date}}</p>
+          </div>
+          <div class="card-content">
+            <h5>Description:</h5>
+            <p>{{description}}</p>
+          </div>
+
+          <div data-id="{{_id}}" class="card-action hoverable center-align">
+            <span class="del close btn red">Mark Closed</span>
+          </div>
+        </div>
+      </div>
+    {{/if}}
   {{else}}
     <p>No tickets to display</p>
   {{/each}}

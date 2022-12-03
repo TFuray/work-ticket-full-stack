@@ -11,12 +11,6 @@ router.post('/createTicket', ticketsController.createTicket)
 
 router.put('/markClosed', ticketsController.markClosed)
 
-// router.post('/', ensureAuth, ticketsController.postIndex)
-
-// router.put('/markComplete', ticketsController.markComplete)
-
-// router.put('/markIncomplete', ticketsController.markIncomplete)
-
-// router.delete('/deleteTodo', ticketsController.deleteTodo)
+// router.get('/comment', ticketsController.addComment)
 
 module.exports = router

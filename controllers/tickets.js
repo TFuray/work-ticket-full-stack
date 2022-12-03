@@ -4,12 +4,12 @@ module.exports = {
   getTickets: async (req, res) => {
     console.log(req.user)
     try {
-      const tickets = await Ticket.find({ completed: false })
+      const tickets = await Ticket.find()
         // .populate('User')
-        .sort({ date: "desc" }) 
+        .sort({ date: 'desc' })
         .lean()
 
-      res.render('tickets/index', { tickets, })
+      res.render('tickets/index', { tickets })
     } catch (err) {
       console.log(err)
     }
@@ -33,7 +33,7 @@ module.exports = {
         comments: req.body.comments,
         clientName: req.user.userName,
         clientId: req.user.id,
-        completed: 'false',
+        completed: 'false'
       })
       console.log('Ticket added')
       res.redirect('/tickets')
@@ -42,27 +42,27 @@ module.exports = {
     }
   },
 
-  markClosed: async (req, res) =>{
+  markClosed: async (req, res) => {
     try {
-      await Ticket.findOneAndUpdate({ _id: req.body._id}, {
-        completed: true
-      })
-      res.redirect('/tickets/index')
+      await Ticket.findOneAndUpdate(
+        { _id: req.body.publicJSFile },
+        {
+          completed: true
+        }
+      )
+      console.log('Marked Closed')
+      res.json('Marked Closed')
     } catch (err) {
       console.log(err)
     }
-  }
+  },
 
-  // postIndex: async (req, res) => {
-  //   try {
-  //     const tickets = await Ticket.find({completed: false})
-  //       .populate('user')
-  //       .sort({date: 'desc'})
-  //       .lean()
-  //   } catch (err) {
-  //     console.log(err)
-  //     res.render('error/500')
-  //   }
-  //   },
-    
-  }
+//   addComment: async (req, res) => {
+//     try {
+      
+//     } catch (err) {
+      
+//     }
+//   }
+
+}
