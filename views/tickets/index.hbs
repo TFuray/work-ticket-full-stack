@@ -1,33 +1,50 @@
-<div class="col s12 m12 indicator">
-  <h1 class="center-align">Open Tickets</h1>
-</div>
-<div class="col s1 m1">
-
+<div class="row">
+  <div class="col s12 m12 indicator">
+    <h1 class="">Open Tickets </h1>
+  </div>
 </div>
 <div class="row">
   {{#each tickets}}
-  {{#unless completed}}
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-content center-align blue-grey darken-3 white-text">
-          <h3>{{nameOfJob}}</h3>
-        </div>
+    {{#unless completed}}
+      {{!-- <div class="col s12 m6">
+        <div class="card small">
+          <div class="card-content center-align blue-grey darken-3 white-text">
+            <h3>{{nameOfJob}}</h3>
+          </div>
           <br />
-        <div class="card-content">
-          <p class="open-tickets">Filed by: {{clientName}}</p>
-          <p class="date">On: {{date}}</p>
+          <div class="card-content">
+            <p class="open-tickets">Filed by: {{clientName}}</p>
+            <p class="date">On: {{date}}</p>
+          </div>
+          <div class="card-content">
+            <h5>Description:</h5>
+            <p>{{description}}</p>
+          </div> --}}
+
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
         </div>
         <div class="card-content">
-          <h5>Description:</h5> 
-          <p>{{description}}</p>
+          <span class="card-title activator grey-text text-darken-4">Card Title<i
+              class="material-icons right"
+            >more_vert</i></span>
+          <p><a href="#">This is a link</a></p>
         </div>
-           
-        <div data-id="{{_id}}" class="card-action center-align">
-          <span class="del close btn red hoverable">Mark Closed</span>
-          <span class="comment btn blue-grey hoverable">Add Comment</span>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Card Title<i
+              class="material-icons right"
+            >close</i></span>
+          <p>Here is some more information about this product that is only
+            revealed once clicked on.</p>
         </div>
       </div>
-    </div>
+
+      {{!-- <div data-id="{{_id}}" class="card-action center-align">
+            <span class="del close btn red hoverable">Mark Closed</span>
+            <span class="comment btn blue-grey hoverable">Add Comment</span>
+          </div>
+        </div>
+      </div> --}}
     {{/unless}}
   {{else}}
     <p>No tickets to display</p>
@@ -36,10 +53,7 @@
 </div>
 
 <div class="col s12 m12 indicator">
-  <h1 class="center-align">Closed Tickets</h1>
-</div>
-<div class="col s1 m1">
-
+  <h1 class="">Closed Tickets</h1>
 </div>
 
 <div class="row">
@@ -62,7 +76,7 @@
           </div>
 
           <div data-id="{{_id}}" class="card-action hoverable center-align">
-            <span class="del close btn ">ReOpen</span>
+            <span class="del close btn">ReOpen</span>
           </div>
         </div>
       </div>

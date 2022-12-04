@@ -10,3 +10,7 @@ form{
 .title {
     font-size: 4rem !important ;
 }
+
+h1.title-card {
+    height: 55px !important;
+}
