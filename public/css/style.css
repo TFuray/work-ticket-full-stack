@@ -11,6 +11,31 @@ form{
     font-size: 4rem !important ;
 }
 
-h1.title-card {
-    height: 55px !important;
+h1#header-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.346); */
+}
+
+div#header-container {
+    height: 85px;
+}
+
+span.card-name{
+    font-weight: 400;
+}
+
+div.row.date {
+    width: 30%;
+}
+
+body {
+    background-color: rgba(131, 151, 163, 0.315);
+}
+
+.card-title.revealed {
+    font-weight: 600;
+}
+h6#back-card {
+    font-weight: 600;
 }

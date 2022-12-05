@@ -1,55 +1,60 @@
 <div class="row">
   <div class="col s12 m12 indicator">
+    <br />
     <h1 class="">Open Tickets </h1>
   </div>
 </div>
+
 <div class="row">
   {{#each tickets}}
     {{#unless completed}}
-      {{!-- <div class="col s12 m6">
-        <div class="card small">
-          <div class="card-content center-align blue-grey darken-3 white-text">
-            <h3>{{nameOfJob}}</h3>
-          </div>
-          <br />
+      <div class="col s12 m6">
+        <div class="card sticky-action">
           <div class="card-content">
-            <p class="open-tickets">Filed by: {{clientName}}</p>
-            <p class="date">On: {{date}}</p>
-          </div>
-          <div class="card-content">
+            <div
+              class="card-content center-align green darken-4 white-text activator"
+            >
+              <h3 class="activator">{{nameOfJob}}</h3>
+            </div>
+            <br />
+            <h5 class="open-tickets activator">Filed by:
+              <span class="card-name">{{clientName}}</span>
+            </h5>
+            <h5 class="activator date">On:
+              <span class="card-name">{{formatDate
+                  date
+                  "MMMM Do YYYY a"
+                }}</span></h5>
+            <h5 class="activator open-tickets">Assigned to:
+            <span class="card-name">{{assignedTo}}</span></h5>
+            <br />
             <h5>Description:</h5>
+            <p>{{stripTags (truncate description 150)}}</p>
+          </div>
+          <div data-id="{{_id}}" class="card-action center-align">
+            <span
+              class="del close btn red darken-4 text-white waves-red hoverable"
+            >Mark Closed</span>
+            <span
+              class="comment btn grey darken-3 text-white hoverable waves"
+            >Add Comment</span>
+          </div>
+          <div class="card-reveal">
+            <h4
+              class="card-title revealed grey-text text-darken-4"
+            >{{nameOfJob}}<i class="fas fa-xmark right"></i></h4>
+            <h6 id="back-card">Location: <span class="card-name">{{location}}</span></h6>
+            <br />
             <p>{{description}}</p>
-          </div> --}}
-
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i
-              class="material-icons right"
-            >more_vert</i></span>
-          <p><a href="#">This is a link</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i
-              class="material-icons right"
-            >close</i></span>
-          <p>Here is some more information about this product that is only
-            revealed once clicked on.</p>
+            <h5 class="open-tickets">Comments:</h5>
+            <p>{{comments}}</p>
+          </div>
         </div>
       </div>
-
-      {{!-- <div data-id="{{_id}}" class="card-action center-align">
-            <span class="del close btn red hoverable">Mark Closed</span>
-            <span class="comment btn blue-grey hoverable">Add Comment</span>
-          </div>
-        </div>
-      </div> --}}
     {{/unless}}
   {{else}}
     <p>No tickets to display</p>
   {{/each}}
-
 </div>
 
 <div class="col s12 m12 indicator">
@@ -61,8 +66,8 @@
     {{#if completed}}
 
       <div class="col s12 m6">
-        <div class="card">
-          <div class="card-content center-align blue-grey darken-3 white-text">
+        <div class="card s12 m6">
+          <div class="card-content center-align blue-grey accent-4 white-text">
             <h3>{{nameOfJob}}</h3>
           </div>
           <br />

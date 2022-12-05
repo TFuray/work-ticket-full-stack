@@ -21,11 +21,27 @@ connectDB()
 // init app
 const app = express()
 
+// Handlebars Helper
+const {
+  formatDate,
+  editIcon,
+  stripTags,
+  truncate,
+  select
+} = require('./helpers/hbs')
+
 // Handlebars
 app.engine(
   'hbs',
   engine({
     extname: 'hbs',
+    helpers: {
+      formatDate,
+      stripTags,
+      truncate,
+      editIcon,
+      select
+    },
     layoutsDir: './views/layouts/'
   })
 )
