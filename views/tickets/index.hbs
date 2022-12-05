@@ -31,7 +31,7 @@
               <br />
               <h5>Description:</h5>
               <p>{{stripTags (truncate description 150)}}</p>
-              <i class="fas fa-ellipsis-h small right"></i>
+              <i class="fas fa-ellipsis-h small right activator"></i>
             </div>
             <div data-id="{{_id}}" class="card-action center-align">
               <span
@@ -66,6 +66,63 @@
 </div>
 
 <div class="row">
+  <div class="container">
+    {{#each tickets}}
+      {{#if completed}}
+        <div class="col-md-3 col m4">
+          <div class="card sticky-action">
+            <div class="card-content">
+              <div
+                class="card-content center-align red darken-4 white-text activator"
+              >
+                <h3 class="activator">{{nameOfJob}}</h3>
+              </div>
+              <br />
+              <h5 class="open-tickets activator">Filed by:
+                <span class="card-name">{{clientName}}</span>
+              </h5>
+              <h5 class="activator date">On:
+                <span class="card-name">{{formatDate
+                    date
+                    "MMMM Do YYYY a"
+                  }}</span></h5>
+              <h5 class="activator open-tickets">Assigned to:
+                <span class="card-name">{{assignedTo}}</span></h5>
+              <br />
+              <h5>Description:</h5>
+              <p>{{stripTags (truncate description 150)}}</p>
+              <i class="fas fa-ellipsis-h small right activator"></i>
+            </div>
+            <div data-id="{{_id}}" class="card-action center-align">
+              <span
+                class="del close btn green darken-4 text-white waves-red hoverable"
+              >Mark Open</span>
+              <span
+                class="comment btn grey darken-3 text-white hoverable waves"
+              >Add Comment</span>
+            </div>
+            <div class="card-reveal">
+              <h4
+                class="card-title revealed grey-text text-darken-4"
+              >{{nameOfJob}}<i class="fas fa-xmark right"></i></h4>
+              <h6 id="back-card">Location:
+                <span class="card-name">{{location}}</span></h6>
+              <br />
+              <p>{{description}}</p>
+              <h5 class="open-tickets">Comments:</h5>
+              <p>{{comments}}</p>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{else}}
+      <p>No tickets to display</p>
+    {{/each}}
+  </div>
+</div>
+
+
+{{!-- <div class="row">
   {{#each tickets}}
     {{#if completed}}
 
@@ -93,4 +150,4 @@
   {{else}}
     <p>No tickets to display</p>
   {{/each}}
-</div>
+</div> --}}

@@ -49,6 +49,8 @@ async function markOpen () {
   }
 }
 
+let allUsers = []
+
 // async function addComment () {
 //   const ticketId = this.parentNode.dataset.id
 //   try {

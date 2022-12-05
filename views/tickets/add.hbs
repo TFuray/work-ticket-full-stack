@@ -8,6 +8,18 @@
       </div>
     </div>
 
+     <div class="row">
+      <div class="input-field">
+        <select name="assignedTo" id="assignedTo">
+          <option value="Anyone">Anyone</option>
+          {{#each users}}
+          <option value="{{userName}}">{{userName}}</option>
+          {{/each}}
+        </select>
+        <label for="assignedTo">Assigned To</label>
+      </div>
+    </div>
+
     <div class="row">
       <div class="input-field">
         <input type="text" id="location" name="location" />

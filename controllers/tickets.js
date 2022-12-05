@@ -1,4 +1,5 @@
 const Ticket = require('../models/Ticket')
+const User = require('../models/User')
 
 module.exports = {
   getTickets: async (req, res) => {
@@ -17,7 +18,10 @@ module.exports = {
 
   addTicket: async (req, res) => {
     try {
-      res.render('tickets/add')
+      const users = await User.find()
+      .sort({ userName: 'desc'})
+      .lean()
+      res.render('tickets/add', { users })
     } catch (err) {
       console.log(err)
     }
