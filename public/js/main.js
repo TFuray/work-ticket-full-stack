@@ -1,8 +1,12 @@
 const ticketComplete = document.querySelectorAll('.del')
+const ticketReopen = document.querySelectorAll('.reopen')
 // const ticketComment = document.querySelectorAll('.comment')
 
 Array.from(ticketComplete).forEach(el => {
   el.addEventListener('click', markClosed)
+})
+Array.from(ticketReopen).forEach(el => {
+  el.addEventListener('click', markOpen)
 })
 
 // Array.from(ticketComment).forEach((el)=>{
@@ -24,6 +28,24 @@ async function markClosed () {
     location.reload()
   } catch (err) {
     console.log(err)
+  }
+}
+
+async function markOpen () {
+  const ticketId = this.parentNode.dataset.id
+  try {
+    const response = await fetch('tickets/reopen', {
+      method: 'put',
+      headers: {'Content-type': 'application/json' },
+      body: JSON.stringify({
+        publicJSFile: ticketId
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+    location.reload()
+  } catch (err) {
+   console.log(err) 
   }
 }
 

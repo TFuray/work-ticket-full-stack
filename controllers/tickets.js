@@ -57,6 +57,22 @@ module.exports = {
     }
   },
 
+  reopen: async (req, res) => {
+    try {
+      await Ticket.findOneAndUpdate(
+        {_id: req.body.publicJSFile },
+        {
+          completed: false
+        }
+      )
+      console.log('Marked Open')
+      res.json('Marked Open')
+    } catch (err) {
+     console.log(err) 
+    }
+  },
+
+
 //   addComment: async (req, res) => {
 //     try {
       

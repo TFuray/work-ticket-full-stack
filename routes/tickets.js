@@ -11,6 +11,8 @@ router.post('/createTicket', ticketsController.createTicket)
 
 router.put('/markClosed', ticketsController.markClosed)
 
+router.put('/reopen', ticketsController.reopen)
+
 // router.get('/comment', ticketsController.addComment)
 
 module.exports = router
