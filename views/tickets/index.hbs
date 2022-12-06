@@ -9,8 +9,8 @@
   <div class="container">
     {{#each tickets}}
       {{#unless completed}}
-        <div class="col-md-3 col m4">
-          <div class="card sticky-action">
+        <div class="col-md-3 col s4 m4">
+          <div class="card sticky-action medium">
             <div class="card-content">
               <div
                 class="card-content center-align green darken-4 white-text activator"
@@ -30,8 +30,9 @@
                 <span class="card-name">{{assignedTo}}</span></h5>
               <br />
               <h5>Description:</h5>
+              <i class="fas fa-ellipsis-h small float right activator"></i>
               <p>{{stripTags (truncate description 150)}}</p>
-              <i class="fas fa-ellipsis-h small right activator"></i>
+              
             </div>
             <div data-id="{{_id}}" class="card-action center-align">
               <span
@@ -95,7 +96,7 @@
             </div>
             <div data-id="{{_id}}" class="card-action center-align">
               <span
-                class="del close btn green darken-4 text-white waves-red hoverable"
+                class="reopen close btn green darken-4 text-white waves-red hoverable"
               >Mark Open</span>
               <span
                 class="comment btn grey darken-3 text-white hoverable waves"
@@ -120,7 +121,6 @@
     {{/each}}
   </div>
 </div>
-
 
 {{!-- <div class="row">
   {{#each tickets}}

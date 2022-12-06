@@ -7,7 +7,7 @@ module.exports = {
     try {
       const tickets = await Ticket.find()
         // .populate('User')
-        .sort({ date: 'desc' })
+        .sort({ date: 'asc' })
         .lean()
 
       res.render('tickets/index', { tickets })
@@ -33,6 +33,7 @@ module.exports = {
         nameOfJob: req.body.nameOfJob,
         location: req.body.location,
         description: req.body.description,
+        assignedTo: req.body.assignedTo,
         date: req.body.date,
         comments: req.body.comments,
         clientName: req.user.userName,
