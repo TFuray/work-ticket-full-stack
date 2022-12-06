@@ -13,6 +13,13 @@ router.put('/markClosed', ticketsController.markClosed)
 
 router.put('/reopen', ticketsController.reopen)
 
+router.get('/addComment/:id', ensureAuth, ticketsController.addComment) 
+
+router.get('/:id', ticketsController.showSingleTicket)
+
+router.put('/', ticketsController.saveComment)
+
+
 // router.get('/comment', ticketsController.addComment)
 
 module.exports = router

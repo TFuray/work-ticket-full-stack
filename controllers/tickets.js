@@ -77,6 +77,41 @@ module.exports = {
     }
   },
 
+  addComment: async (req,res) => {
+    try {
+      const ticket = await Ticket.findOne({
+        _id: req.params.id,
+      }).lean()
+
+      res.render("tickets/addcomment", {
+        ticket,
+      })
+    } catch (err) {
+      console.log('err')
+      res.render('error/500')
+    }
+  },
+
+  showSingleTicket: async (req, res) => {
+    let ticket = await Ticket.findById(req.params.id).lean()
+    res.redirect('/tickets', {
+      ticket,
+    })
+  },
+
+  saveComment: async (req, res) => {
+    try {
+      let ticket = await Ticket.findById(req.params.id).lean()
+
+      ticket = await Ticket.findOneAndUpdate({_id: req.params.id}, req.body, {
+        new: true,
+        runValidators: true,
+      })
+      res.redirect('/tickets')
+    } catch (err) {
+     console.log(err) 
+    }
+  }
 
 //   addComment: async (req, res) => {
 //     try {

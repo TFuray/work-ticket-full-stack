@@ -7,7 +7,7 @@ const TicketSchema = new mongoose.Schema({
   },
   clientId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   clientName: {
     type: String
