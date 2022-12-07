@@ -49,6 +49,7 @@ module.exports = {
 
   markClosed: async (req, res) => {
     try {
+      console.log(req.body.publicJSFile)
       await Ticket.findOneAndUpdate(
         { _id: req.body.publicJSFile },
         {

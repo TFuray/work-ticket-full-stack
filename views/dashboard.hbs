@@ -1,5 +1,5 @@
 <h2>Dashboard</h2>
-<h3>Welcome {{name}}</h3>
+<h3>Welcome {{user.userName}}</h3>
 
 <br />
 
@@ -27,8 +27,8 @@
                   {{formatDate date "MMMM Do YYYY"}}</p>
               </div>
               <div class="col s9">
-                <p class="collections-title">Description:</p>
-                <p class="collections-content">{{description}}</p>
+                <p class="collections-title" data-id="{{_id}}">Description:</p>
+                <p class="collections-content"><span class="btn red float right delete"><i class="fas fa-trash small"></i></span>{{stripTags (truncate description 150)}}</p>
               </div>
             </div>
           </li>
