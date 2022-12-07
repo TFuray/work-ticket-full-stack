@@ -39,3 +39,12 @@ body {
 h6#back-card {
     font-weight: 600;
 }
+
+
+
+/* Dashboard */
+
+h6.table-title{
+    font-size: 20px;
+    font-weight: 700;
+}

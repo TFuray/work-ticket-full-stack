@@ -17,7 +17,7 @@ router.get('/addComment/:id', ensureAuth, ticketsController.addComment)
 
 router.get('/:id', ticketsController.showSingleTicket)
 
-router.put('/', ticketsController.saveComment)
+router.post('/addComment/:id', ticketsController.saveComment)
 
 
 // router.get('/comment', ticketsController.addComment)
