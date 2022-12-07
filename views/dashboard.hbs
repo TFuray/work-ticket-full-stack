@@ -10,81 +10,30 @@
       <ul id="projects-collection" class="collection z-depth-1">
         <li class="collection-item">
           <h6 class="collection-header m-2 table-title">Open</h6>
-          <h6 class="collection-header m-2 table-title">Open</h6>
         </li>
         {{#each tickets}}
-        
-        <li class="collection-item">
-          <div class="row">
-            <div class="col s9">
-              <p class="collections-title">{{nameOfJob}}</p>
-              <p class="collections-content">{{clientName}}</p>
+
+          <li class="collection-item">
+            <div class="row">
+              <div class="col s3">
+                <p class="collections-title">{{nameOfJob}}</p>
+                <p class="collections-content"><span
+                    class="collections-content"
+                  >Assigned to:</span>
+                  {{assignedTo}}</p>
+                <p class="collections-content"><span
+                    class="collections-content"
+                  >Date:</span>
+                  {{formatDate date "MMMM Do YYYY"}}</p>
+              </div>
+              <div class="col s9">
+                <p class="collections-title">Description:</p>
+                <p class="collections-content">{{description}}</p>
+              </div>
             </div>
-            <div class="col s3">
-            <p>{{description}}</p>
-            </div>
-          </div>
-        </li>
-{{/each}}
+          </li>
+        {{/each}}
       </ul>
     </div>
   </div>
 </div>
-
-{{!-- {{#if tickets}}
-<div class="row">
-  <div class="card-panel green">
-    <h3>Open Tickets</h3>
-    <p>This is not what dashboard will look like. It's going to have a view more like "submitted tickets: open", "submitted tickets closed", "your tickets open", "your tickets closed", "button to edit your tickets", "button to make new tickets", "maybe some sort of announcements section", just more customized to the individual user</p>
-  </div>
-</div>
-
-{{#each tickets}}
-{{#unless completed}}
-<div class="card-panel hoverable">
-  <div class="right">
-    <a href="#"><i class="material-icons delete">delete</i></a>
-  </div>
-  <h4>{{nameOfJob}}</h4>
-  <p>Filed by: {{clientName}} | On: {{date}}</p>
-  <h5>Description:</h5>
-  <div>{{description}}</div>
-</div>
-{{/unless}}
-{{/each}} --}}
-
-{{!-- <table class="striped">
-    <thead>
-      <tr>
-        <th>Job</th>
-        <th>Description</th>
-        <th>Date Created</th>
-        <th>Submitted By</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each stories}}
-        <tr>
-          <td><a href="/stories/{{_id}}">{{title}}</a></td>
-          <td>{{formatDate createdAt "MMMM Do YYY, h:mm:ss a"}}</td>
-          <td><span class="dash-status">{{status}}</span></td>
-          <td>
-            <a href="/stories/edit/{{_id}}" class="btn btn-float">
-              <i class="fas fa-edit"></i>
-            </a>
-
-            <form action="/stories/{{_id}}" method="POST" id="delete-form">
-              <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit" class="btn red">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table> --}}
-{{!-- {{else}}
-  <p>You have not created any stories</p>
-{{/if}} --}}

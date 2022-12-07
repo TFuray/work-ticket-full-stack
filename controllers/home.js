@@ -7,11 +7,9 @@ module.exports = {
 
   getDashboard: async (req,res)=>{
     try {
-      const tickets = await Ticket.find({ user: req.user.id }).lean()
-      res.render("dashboard", {
-        name: req.user.userName,
-        tickets
-      })
+      const tickets = await Ticket.find({clientId: req.user._id}).lean()
+      console.log(tickets)
+      res.render('dashboard', {tickets})
     } catch (err) {
      console.log('err') 
      res.render('error/500')

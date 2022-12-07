@@ -7,7 +7,7 @@ module.exports = {
     try {
       const tickets = await Ticket.find()
         // .populate('User')
-        .sort({ date: 'asc' })
+        .sort({ date: 'desc' })
         .lean()
 
       res.render('tickets/index', { tickets })
