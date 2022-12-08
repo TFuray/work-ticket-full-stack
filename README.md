@@ -1,8 +1,9 @@
-##work-ticket-full-stack
+## Work Ticket Full Stack
+
+An app to create and track work tickets. The motivation behind it was to help streamline things that needed to get done around the house. It can easily be implemented in 
+many different settings, such as small businesses, group projects, classrooms, and even just keeping track of your own to-do's.
 
 ![work-ticket-pic](https://user-images.githubusercontent.com/103867568/206578353-c98353f0-960f-4149-9138-d2f9b6d52b2f.jpg)
-
-An app to create and track work tickets. The motivation behind it was to help streamline things that needed to get done around the house. It can easily be implemented in many different settings, such as small businesses, group projects, classrooms, and even just keeping track of your own to-do's.
 
 ## How It's Made:
 **Tech used:** JavaScript, Express, MongoDB, Handlebars, Passport
