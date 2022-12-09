@@ -38,9 +38,8 @@
               <span
                 class="del close btn red darken-4 text-white waves-red hoverable"
               >Mark Closed</span>
-              <a href="/tickets/addcomment/{{_id}}"><span
-                class="comment btn grey darken-3 text-white hoverable waves"
-              >Add Comment</span></a>
+              <a href="/tickets/show/{{_id}}"><span class="btn grey darken-3 text-white hoverable waves">Show Ticket</span></a>
+
             </div>
             <div class="card-reveal">
               <h4
@@ -98,9 +97,10 @@
               <span
                 class="reopen close btn green darken-4 text-white waves-red hoverable"
               >Mark Open</span>
-              <span
+               <a href="/tickets/show/{{_id}}"><span class="btn grey darken-3 text-white hoverable waves">Show Ticket</span></a>
+              {{!-- <span
                 class="comment btn grey darken-3 text-white hoverable waves"
-              >Add Comment</span>
+              >Add Comment</span> --}}
             </div>
             <div class="card-reveal">
               <h4

@@ -15,7 +15,7 @@ router.put('/reopen', ensureAuth, ticketsController.reopen)
 
 router.get('/addComment/:id', ensureAuth, ticketsController.addComment) 
 
-router.get('/:id', ensureAuth, ticketsController.showSingleTicket)
+router.get('/show/:id', ensureAuth, ticketsController.showSingleTicket)
 
 router.post('/addComment/:id', ensureAuth, ticketsController.saveComment)
 

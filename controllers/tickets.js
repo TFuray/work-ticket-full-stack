@@ -18,9 +18,7 @@ module.exports = {
 
   addTicket: async (req, res) => {
     try {
-      const users = await User.find()
-      .sort({ userName: 'desc'})
-      .lean()
+      const users = await User.find().sort({ userName: 'desc' }).lean()
       res.render('tickets/add', { users })
     } catch (err) {
       console.log(err)
@@ -66,7 +64,7 @@ module.exports = {
   reopen: async (req, res) => {
     try {
       await Ticket.findOneAndUpdate(
-        {_id: req.body.publicJSFile },
+        { _id: req.body.publicJSFile },
         {
           completed: false
         }
@@ -74,17 +72,17 @@ module.exports = {
       console.log(req.body)
       res.json('Marked Open')
     } catch (err) {
-     console.log(err) 
+      console.log(err)
     }
   },
 
-  addComment: async (req,res) => {
+  addComment: async (req, res) => {
     try {
       const ticket = await Ticket.findOne({
-        _id: req.params.id,
+        _id: req.params.id
       }).lean()
-      res.render("tickets/addcomment", {
-        ticket,
+      res.render('tickets/addcomment', {
+        ticket
       })
     } catch (err) {
       console.log('err')
@@ -93,31 +91,33 @@ module.exports = {
   },
 
   showSingleTicket: async (req, res) => {
-    let ticket = await Ticket.findById(req.params.id).lean()
-    res.redirect('/tickets', {
-      ticket,
-    })
+    try {
+      let ticket = await Ticket.findById(req.params.id).lean()
+      res.render('tickets/show', {
+        ticket: ticket,
+        user: req.user
+      })
+    } catch (err) {
+      console.log(err)
+    }
   },
 
   saveComment: async (req, res) => {
     try {
       let ticket = await Ticket.findById(req.params.id).lean()
 
-      ticket = await Ticket.findOneAndUpdate({_id: req.params.id},
-      req.body
-      )
+      ticket = await Ticket.findOneAndUpdate({ _id: req.params.id }, req.body)
       res.redirect('/tickets')
     } catch (err) {
-     console.log(err) 
+      console.log(err)
     }
-  },
+  }
 
-//   addComment: async (req, res) => {
-//     try {
-      
-//     } catch (err) {
-      
-//     }
-//   }
+  //   addComment: async (req, res) => {
+  //     try {
 
+  //     } catch (err) {
+
+  //     }
+  //   }
 }
