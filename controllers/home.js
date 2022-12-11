@@ -12,6 +12,7 @@ module.exports = {
       // const user = await User.findone({_id: req.user._id})
       // console.log(req)
       const user = await User.findOne({userName: req.user.userName}).lean()
+      const assignedTickets = await Ticket.find({assignedTo: req.userName})
       res.render('dashboard', {tickets, user})
     } catch (err) {
      console.log('err') 
