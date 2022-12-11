@@ -11,6 +11,6 @@ router.get('/logout', authController.logout)
 router.get('/signup', authController.getSignup)
 router.post('/signup', authController.postSignup)
 router.get('/dashboard', ensureAuth, homeController.getDashboard)
-router.delete('/dashboard/deleteTicket', homeController.deleteTicket)
+router.delete('/home/deleteTicket', homeController.deleteTicket)
 
 module.exports = router

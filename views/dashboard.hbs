@@ -26,12 +26,18 @@
                   >Date:</span>
                   {{formatDate date "MMMM Do YYYY"}}</p>
               </div>
-              <div class="col s9">
-                <p class="collections-title" data-id="{{_id}}">Description:</p>
-                <p class="collections-content"><span class="btn red float right delete"><i class="fas fa-trash small"></i></span>{{stripTags (truncate description 150)}}</p>
+              <div class="col s9" data-id="{{_id}}">
+                <p class="collections-title">Description:</p>
+                <p class="collections-content delete"><span
+                    class="btn red float right"
+                  ><i class="fas fa-trash small delete"></i></span>{{stripTags
+                    (truncate description 150)
+                  }}</p>
               </div>
             </div>
           </li>
+        {{else}}
+          <li class="collections-title">You have no open tickets to display</li>
         {{/each}}
       </ul>
     </div>

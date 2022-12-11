@@ -25,7 +25,7 @@ module.exports = {
       await Ticket.findOneAndDelete(
         {_id: req.body.publicJSFile}
       )
-        console.log('Deleted Ticket')
+        console.log(req.body.publicJSFile)
         res.json('Deleted Ticket') 
     } catch (err) {
       console.log(err)
