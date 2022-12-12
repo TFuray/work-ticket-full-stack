@@ -3,7 +3,7 @@
 
 <br />
 
-{{!-- <h4>Your Tickets</h4> --}}
+{{! <h4>Your Tickets</h4> }}
 <div id="work-collections">
   <div class="row">
     <div class="container">
@@ -18,7 +18,9 @@
             <li class="collection-item">
               <div class="row">
                 <div class="col s3">
-                  <p class="collections-title">{{nameOfJob}}</p>
+                  <p class="collections-title"><span
+                      class="collections-content"
+                    >Ticket: <br /></span>{{nameOfJob}}</p>
                   <p class="collections-content"><span
                       class="collections-content"
                     >Assigned to:</span>
@@ -32,7 +34,7 @@
                   <p class="collections-title">Description:</p>
                   <p class="collections-content delete"><span
                       class="btn red float right"
-                    ><i class="fas fa-trash small delete"></i></span>{{stripTags
+                    ><i class="fas fa-trash small"></i></span>{{stripTags
                       (truncate description 150)
                     }}</p>
                 </div>
@@ -43,37 +45,83 @@
           {{/each}}
         </ul>
       </div>
+
+      {{! Tickets assigned to you }}
+
       <div class="col s12 m6">
         <h4>Assigned Tickets</h4>
         <ul id="projects-collection" class="collection z-depth-1">
           <li class="collection-item">
             <h6 class="collection-header m-2 table-title">Open</h6>
           </li>
-          {{#each tickets}}
+          {{#each assignedTickets}}
+            {{#unless completed}}
 
-            <li class="collection-item">
-              <div class="row">
-                <div class="col s3">
-                  <p class="collections-title">{{nameOfJob}}</p>
-                  <p class="collections-content"><span
-                      class="collections-content"
-                    >Assigned to:</span>
-                    {{assignedTo}}</p>
-                  <p class="collections-content"><span
-                      class="collections-content"
-                    >Date:</span>
-                    {{formatDate date "MMMM Do YYYY"}}</p>
+              <li class="collection-item">
+                <div class="row">
+                  <div class="col s3">
+                    <p class="collections-title">{{nameOfJob}}</p>
+                     <p class="collections-content"><span
+                        class="collections-content"
+                      >Client:</span>
+                      {{clientName}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Assigned to:</span>
+                      {{assignedTo}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Date:</span>
+                      {{formatDate date "MMMM Do YYYY"}}</p>
+                  </div>
+                  <div class="col s9" data-id="{{_id}}">
+                    <p class="collections-title">Description:</p>
+                    <p class="collections-content del">{{stripTags
+                        (truncate description 150)
+                      }}</p><span
+                      class="del close btn red darken-4 text-white waves-red hoverable"
+                    >Mark Closed</span>
+                  </div>
                 </div>
-                <div class="col s9" data-id="{{_id}}">
-                  <p class="collections-title">Description:</p>
-                  <p class="collections-content delete"><span
-                      class="btn red float right"
-                    ><i class="fas fa-trash small delete"></i></span>{{stripTags
-                      (truncate description 150)
-                    }}</p>
+              </li>
+            {{/unless}}
+          {{else}}
+            <li class="collections-title">You have no open tickets to display</li>
+          {{/each}}
+
+          {{#each anyoneTickets}}
+            {{#unless completed}}
+            {{#ifCond clientName '!==' user.userName}}
+
+              <li class="collection-item">
+                <div class="row">
+                  <div class="col s3">
+                    <p class="collections-title">{{nameOfJob}}</p>
+                     <p class="collections-content"><span
+                        class="collections-content"
+                      >Client:</span>
+                      {{clientName}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Assigned to:</span>
+                      {{assignedTo}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Date:</span>
+                      {{formatDate date "MMMM Do YYYY"}}</p>
+                  </div>
+                  <div class="col s9" data-id="{{_id}}">
+                    <p class="collections-title">Description:</p>
+                    <p class="collections-content del">{{stripTags
+                        (truncate description 150)
+                      }}</p><span
+                      class="del close btn red darken-4 text-white waves-red hoverable"
+                    >Mark Closed</span>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+              {{/unless}}
+            {{/unless}}
           {{else}}
             <li class="collections-title">You have no open tickets to display</li>
           {{/each}}

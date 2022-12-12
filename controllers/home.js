@@ -8,14 +8,15 @@ module.exports = {
 
   getDashboard: async (req,res)=>{
     try {
+      let anyone = 'Anyone'
       const tickets = await Ticket.find({clientId: req.user._id}).lean()
-      // const user = await User.findone({_id: req.user._id})
-      // console.log(req)
       const user = await User.findOne({userName: req.user.userName}).lean()
-      const assignedTickets = await Ticket.find({assignedTo: req.userName})
-      res.render('dashboard', {tickets, user})
+      const assignedTickets = await Ticket.find({assignedTo: req.user.userName}).lean()
+      const anyoneTickets= await Ticket.find({assignedTo: req.user.userName && 'Anyone'}).lean()
+
+      res.render('dashboard', {tickets, user, assignedTickets, anyoneTickets})
     } catch (err) {
-     console.log('err') 
+     console.log(err) 
      res.render('error/500')
     }
   },
