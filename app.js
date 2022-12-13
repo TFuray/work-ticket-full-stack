@@ -27,7 +27,8 @@ const {
   editIcon,
   stripTags,
   truncate,
-  select
+  select,
+  ifCond,
 } = require('./helpers/hbs')
 
 // Handlebars
@@ -40,7 +41,8 @@ app.engine(
       stripTags,
       truncate,
       editIcon,
-      select
+      select,
+      ifCond,
     },
     layoutsDir: './views/layouts/'
   })

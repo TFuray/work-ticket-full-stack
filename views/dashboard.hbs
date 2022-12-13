@@ -60,8 +60,10 @@
               <li class="collection-item">
                 <div class="row">
                   <div class="col s3">
-                    <p class="collections-title">{{nameOfJob}}</p>
-                     <p class="collections-content"><span
+                    <p class="collections-title"><span
+                        class="collections-content"
+                      >Ticket: <br /></span>{{nameOfJob}}</p>
+                    <p class="collections-content"><span
                         class="collections-content"
                       >Client:</span>
                       {{clientName}}</p>
@@ -88,16 +90,26 @@
           {{else}}
             <li class="collections-title">You have no open tickets to display</li>
           {{/each}}
+        </ul>
+      </div>
 
+ {{!-- Tickets open to anyone --}}
+      <div class="col s12 m6">
+        <h4>Anyone Tickets</h4>
+        <ul id="projects-collection" class="collection z-depth-1">
+          <li class="collection-item">
+            <h6 class="collection-header m-2 table-title">Open</h6>
+          </li>
           {{#each anyoneTickets}}
             {{#unless completed}}
-            {{#ifCond clientName '!==' user.userName}}
 
               <li class="collection-item">
                 <div class="row">
                   <div class="col s3">
-                    <p class="collections-title">{{nameOfJob}}</p>
-                     <p class="collections-content"><span
+                    <p class="collections-title"><span
+                        class="collections-content"
+                      >Ticket: <br /></span>{{nameOfJob}}</p>
+                    <p class="collections-content"><span
                         class="collections-content"
                       >Client:</span>
                       {{clientName}}</p>
@@ -120,7 +132,6 @@
                   </div>
                 </div>
               </li>
-              {{/unless}}
             {{/unless}}
           {{else}}
             <li class="collections-title">You have no open tickets to display</li>
