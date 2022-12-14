@@ -9,37 +9,78 @@
     <div class="container">
       <div class="col s12 m6 l6">
         <h4>Your Tickets</h4>
+
+        {{! OPEN TICKETS }}
         <ul id="projects-collection" class="collection z-depth-1">
           <li class="collection-item">
             <h6 class="collection-header m-2 table-title">Open</h6>
           </li>
           {{#each tickets}}
+            {{#unless completed}}
+              <li class="collection-item">
+                <div class="row">
+                  <div class="col s3">
+                    <p class="collections-title"><span
+                        class="collections-content"
+                      >Ticket: <br /></span>{{nameOfJob}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Assigned to:</span>
+                      {{assignedTo}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Date:</span>
+                      {{formatDate date "MMMM Do YYYY"}}</p>
+                  </div>
+                  <div class="col s9" data-id="{{_id}}">
+                    <p class="collections-title">Description:</p>
+                    <p class="collections-content delete"><span
+                        class="btn red float right"
+                      ><i class="fas fa-trash small"></i></span>{{stripTags
+                        (truncate description 150)
+                      }}</p>
+                  </div>
+                </div>
+              </li>
+            {{/unless}}
+          {{else}}
+            <li class="collections-title">You have no open tickets to display</li>
+          {{/each}}
+        </ul>
 
-            <li class="collection-item">
-              <div class="row">
-                <div class="col s3">
-                  <p class="collections-title"><span
-                      class="collections-content"
-                    >Ticket: <br /></span>{{nameOfJob}}</p>
-                  <p class="collections-content"><span
-                      class="collections-content"
-                    >Assigned to:</span>
-                    {{assignedTo}}</p>
-                  <p class="collections-content"><span
-                      class="collections-content"
-                    >Date:</span>
-                    {{formatDate date "MMMM Do YYYY"}}</p>
+        {{! CLOSED TICKETS }}
+        <ul id="projects-collection" class="collection z-depth-1">
+          <li class="collection-item">
+            <h6 class="collection-header m-2 table-title">Closed</h6>
+          </li>
+          {{#each tickets}}
+            {{#if completed}}
+              <li class="collection-item">
+                <div class="row">
+                  <div class="col s3">
+                    <p class="collections-title"><span
+                        class="collections-content"
+                      >Ticket: <br /></span>{{nameOfJob}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Assigned to:</span>
+                      {{assignedTo}}</p>
+                    <p class="collections-content"><span
+                        class="collections-content"
+                      >Date:</span>
+                      {{formatDate date "MMMM Do YYYY"}}</p>
+                  </div>
+                  <div class="col s9" data-id="{{_id}}">
+                    <p class="collections-title">Description:</p>
+                    <p class="collections-content delete"><span
+                        class="btn red float right"
+                      ><i class="fas fa-trash small"></i></span>{{stripTags
+                        (truncate description 150)
+                      }}</p>
+                  </div>
                 </div>
-                <div class="col s9" data-id="{{_id}}">
-                  <p class="collections-title">Description:</p>
-                  <p class="collections-content delete"><span
-                      class="btn red float right"
-                    ><i class="fas fa-trash small"></i></span>{{stripTags
-                      (truncate description 150)
-                    }}</p>
-                </div>
-              </div>
-            </li>
+              </li>
+            {{/if}}
           {{else}}
             <li class="collections-title">You have no open tickets to display</li>
           {{/each}}
@@ -92,8 +133,9 @@
           {{/each}}
         </ul>
       </div>
+      
 
- {{!-- Tickets open to anyone --}}
+      {{! Tickets open to anyone }}
       <div class="col s12 m6">
         <h4>Anyone Tickets</h4>
         <ul id="projects-collection" class="collection z-depth-1">

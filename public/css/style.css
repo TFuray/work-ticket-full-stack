@@ -57,3 +57,7 @@ span.single-info{
     font-size: 16px;
     font-weight: 500;
 }
+
+span.btn.red.float.right {
+    margin: 10px 5px;
+}
