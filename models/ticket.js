@@ -35,9 +35,10 @@ const TicketSchema = new mongoose.Schema({
   comments: {
     type: String
   },
-  completedBy: {
-    type: String
-  },
+  completedBy:{
+   type: String,
+  
+}
 })
 
 module.exports = mongoose.model('Ticket', TicketSchema)

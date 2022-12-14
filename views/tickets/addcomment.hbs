@@ -2,9 +2,10 @@
   <div class="row">
     <form action="/tickets/addComment/{{ticket._id}}" method="POST" class="col s12 m4">
       {{!-- <input type="hidden" name="_method" value="PUT" /> --}}
+      {{!-- <input type="hidden" name="comments" value="{{ticket.comments}}"> --}}
       <div class="row">
         <div class="input-field">
-          <input type="text" id="comments" name="comments" value="{{ticket.comments}}" />
+          <input type="text" id="comments" name="comments"/>
           <label for="comments">Comment</label>
         </div>
       </div>
