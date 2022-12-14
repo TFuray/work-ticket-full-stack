@@ -106,7 +106,7 @@ module.exports = {
     try {
       let ticket = await Ticket.findById(req.params.id).lean()
 
-      ticket = await Ticket.findOneAndUpdate({ _id: req.params.id }, req.body)
+      ticket = await Ticket.findOneAndUpdate({ _id: req.params.id }, {$push: req.body})
       res.redirect('/tickets')
     } catch (err) {
       console.log(err)
