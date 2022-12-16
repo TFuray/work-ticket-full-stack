@@ -7,7 +7,7 @@ const TicketSchema = new mongoose.Schema({
   },
   clientId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'User'
   },
   clientName: {
     type: String
@@ -33,12 +33,12 @@ const TicketSchema = new mongoose.Schema({
     default: Date.now
   },
   comments: {
-    type: String
+    type: [String]
   },
-  completedBy:{
-   type: String,
-  
-}
+
+  completedBy: {
+    type: String
+  }
 })
 
 module.exports = mongoose.model('Ticket', TicketSchema)
