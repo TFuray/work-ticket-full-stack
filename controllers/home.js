@@ -21,16 +21,28 @@ module.exports = {
     }
   },
 
-  deleteTicket: async (req, res) => {
-    console.log(req.body.publicJSFile)
+  deleteTicket: async (req, res)=> {
     try {
-      await Ticket.findOneAndDelete(
-        {_id: req.body.publicJSFile}
-      )
-        console.log(req.body.publicJSFile)
-        res.json('Deleted Ticket') 
+      let ticket = await Ticket.findById({_id: req.params.id })
+      await Ticket.remove({ _id: req.params.id})
+      console.log("Deleted Post")
+      res.redirect('/dashboard')
     } catch (err) {
-      console.log(err)
+        console.log(err); 
+        res.redirect('/dashboard')
     }
   }
+
+  // deleteTicket: async (req, res) => {
+  //   console.log(req.body.publicJSFile)
+  //   try {
+  //     await Ticket.findOneAndDelete(
+  //       {_id: req.body.publicJSFile}
+  //     )
+  //       console.log(req.body.publicJSFile)
+  //       res.json('Deleted Ticket') 
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 }

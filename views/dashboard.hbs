@@ -34,11 +34,19 @@
                   </div>
                   <div class="col s9" data-id="{{_id}}">
                     <p class="collections-title">Description:</p>
-                    <p class="collections-content delete"><span
+                    <p class="collections-content delete">
+                      <form
+                        action="/home/deleteTicket/{{_id}}?_method=DELETE"
+                        method="POST"
+                      >
+                        <button class="btn red float right" type="submit"><i
+                            class="fas fa-trash small"
+                          ></i></button>
+                      </form>
+                      {{! <span
                         class="btn red float right"
-                      ><i class="fas fa-trash small"></i></span>{{stripTags
-                        (truncate description 150)
-                      }}</p>
+                      ><i class="fas fa-trash small"></i></span> }}
+                      {{stripTags (truncate description 150)}}</p>
                   </div>
                 </div>
               </li>
@@ -133,7 +141,6 @@
           {{/each}}
         </ul>
       </div>
-      
 
       {{! Tickets open to anyone }}
       <div class="col s12 m6">
